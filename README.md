@@ -14,8 +14,8 @@
 
 ### 支持平台
 
-- 雀魂网页版（[国际中文服](https://game.maj-soul.com/1/)√ | [日服](https://game.mahjongsoul.com)√ | [国际服](https://mahjongsoul.game.yo-star.com)√）
-- 天凤 [Desktop4K 版](https://tenhou.net/4/)
+- 雀魂网页版（[国服](https://www.majsoul.com/1/)√ | [日服](https://game.mahjongsoul.com)√ | [国际服](https://mahjongsoul.game.yo-star.com)√）
+- 天凤 [Web 版](https://tenhou.net/3/)
 
 
 ## 导航
@@ -35,21 +35,21 @@
 
 分下面几步：
 
-1. 前往 [releases](https://github.com/EndlessCheng/mahjong-helper/releases/latest) 页面下载助手。注意需要解压后才能正常运行。
+1. 前往 [releases](https://github.com/EndlessCheng/mahjong-helper/releases/latest) 页面下载助手。
 
-2. 雀魂需要浏览器允许本地证书，在浏览器地址栏中输入 `chrome://flags/#allow-insecure-localhost`，然后点击高亮那一项的「启用」按钮（[若没有该项见此](https://github.com/EndlessCheng/mahjong-helper/issues/108)）。该功能仅限基于 Chrome 内核开发的浏览器。
+2. 雀魂需要浏览器允许本地证书，在浏览器地址栏中输入 `chrome://flags/#allow-insecure-localhost`，然后点击高亮那一项的「启用」按钮。该功能仅限基于 Chrome 内核开发的浏览器。
    
    （不同浏览器/版本的描述可能不一样，如果打开的页面是英文的话，高亮的就是 `Allow invalid certificates for resources loaded from localhost`，把它的 Disabled 改成 Enabled）
    
-   设置完成后**重启浏览器**。
+   之后重启浏览器。
 
-3. 安装浏览器扩展 Header Editor，用于修改 code.js 文件，发送雀魂游戏中的玩家操作信息至本地运行的助手。
+3. 安装浏览器扩展 Header Editor
    
-   若能翻墙请前往 [谷歌商城](https://chrome.google.com/webstore/detail/header-editor/eningockdidmgiojffjmkdblpjocbhgh?hl=zh) 下载该扩展。或者 [从 CRX 安装该扩展](https://www.chromefor.com/header-editor_v4-0-7/)（若无法安装试试 360 浏览器）。
+   若能翻墙请前往 [谷歌商城](https://chrome.google.com/webstore/detail/header-editor/eningockdidmgiojffjmkdblpjocbhgh?hl=zh) 下载该扩展。或者 [手动安装该扩展](https://www.chromefor.com/header-editor_v4-0-7/)（若无法安装试试 360 浏览器）。
    
-   安装好扩展后点进该扩展的`管理`界面，点击`导入和导出`，在下载规则中填入 `https://endlesscheng.gitee.io/public/mahjong-helper.json`，点击右侧的下载按钮，然后点击下方的`保存`。
+   安装好扩展后点进该扩展的`管理`界面，点击`导入和导出`，在下载规则中填入 `https://jianyan.me/js/mahjong-helper.json`，点击右侧的下载按钮，然后点击下方的`保存`。
 
-安装完成。请重新载入游戏页面。（若您在安装完成后助手仍然无反应，可尝试清除浏览器 cookie，或安装 [CORS Unblock](https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino/related) 以解决此问题，见 [#57](https://github.com/EndlessCheng/mahjong-helper/issues/57)）
+安装完成。请重新载入游戏页面。**若载入时一直黑屏，可能是下载 GitHub 文件过慢导致，请开启翻墙或者耐心等待。连接手机热点或可加快速度。**
 
 在使用本助手前，建议先看一下本页面下方的[示例](#示例)。
 
@@ -164,7 +164,6 @@
 - 玩家立直或听牌率较高时会额外显示对该玩家的安牌，用 | 分隔，左侧为现物，右侧按照危险度由低到高排序（No Chance 和 One Chance 的安牌作为补充参考显示在后面，简写为 NC 和 OC）
 - 下图上家亲家暗杠 2m 后 4p 立直，对家 8s 追立，下家一副露但是手切了很多中张牌，听牌率较高
 - 多家立直/副露时会显示综合危险度
-- 危险度综合考虑了巡目、副露数、他家打点估计（包含亲家与否、副露中的宝牌数等）
 - `[n无筋]` 指该玩家的无筋危险牌的剩余种类数。剩余种类数越少，这些无筋牌就越危险。剩余种类数为零表示该玩家是愚型听牌或振听（注：把 1p4p 这种算作一对筋牌，对于四人麻将来说一共有 3\*6=18 对筋牌，三人麻将则为 2\*6=12 对筋牌）
 
 ![](img/example5c1.png)
@@ -230,7 +229,7 @@
     
     `mahjong-helper -d=38p33m -s 34568m 5678p 23567s`
     
-    特别说明，也可以直接用 `mahjong-helper -s` 启动助手，可以显示更多的信息（适合高分辨率的屏幕）
+    特别说明，也可以直接用 `mahjong-helper -d` 启动助手，可以显示更多的信息（适合高分辨率的屏幕）
 
 - 帮助信息（-h 参数）
 
@@ -280,7 +279,7 @@
 
 [record.go](https://github.com/EndlessCheng/mahjong-helper/blob/master/platform/majsoul/record.go) 展示了使用 WebSocket 登录和下载牌谱的例子。
 
-考虑到还有观看牌谱这种获取前端 UI 事件的情况，还需修改额外的代码。在网页控制台输入 `GameMgr.inRelease = 0`，开启调试模式，通过雀魂已有的日志可以看到相关代码在哪。具体修改了哪些内容可以对比雀魂的 code.js 和我修改后的 [code-zh.js](https://endlesscheng.gitee.io/public/js/majsoul/code-zh.js)。
+考虑到还有观看牌谱这种获取前端 UI 事件的情况，还需修改额外的代码。在网页控制台输入 `GameMgr._inRelease = 0`，开启调试模式，通过雀魂已有的日志可以看到相关代码在哪。具体修改了哪些内容可以对比雀魂的 code.js 和我修改后的 [code.js](https://jianyan.me/majsoul/code-v0.1.4.js)。
 
 
 ## 参与讨论
