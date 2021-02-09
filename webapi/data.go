@@ -1,9 +1,9 @@
 package webapi
 
 import (
-	"os"
-	"io"
 	"bytes"
+	"io"
+	"os"
 )
 
 type ApiData struct {
@@ -16,21 +16,16 @@ type ApiData struct {
 	// 手牌危险度 一个长度为 34 的浮点数组
 	RiskTable []float64 `json:"risk"`
 
-	// 显示终端结果
-	Outputs string `json:"outputs"`
+	DiscardTiles []int `json:"discardTiles"`
+	DiscardTiles1 []int `json:"discardTiles1"`
+	DiscardTiles2 []int `json:"discardTiles2"`
+	DiscardTiles3 []int `json:"discardTiles3"`
 
 	output_buffer bytes.Buffer
 }
 
 func (data *ApiData) Init() {
 	data.output_buffer.Reset()
-} 
-
-func (data *ApiData) GetOutput() {
-	s := data.output_buffer.String()
-	if len(s) > 0 {
-		data.Outputs = s
-	}
 } 
 
 // implement the io.Writer interface

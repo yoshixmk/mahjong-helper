@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/EndlessCheng/mahjong-helper/webapi"
+
 	"github.com/EndlessCheng/mahjong-helper/util"
 	"github.com/EndlessCheng/mahjong-helper/util/model"
+	"github.com/EndlessCheng/mahjong-helper/webapi"
 	"github.com/fatih/color"
 )
 
@@ -477,8 +478,11 @@ func (d *roundData) analysis() error {
 	writer := webapi.ApiDataConvertor{&d.ApiData}
 
 	defer func() {
-		d.ApiData.GetOutput()
 		d.ApiData.Counts = d.counts
+		d.ApiData.DiscardTiles = d.players[0].discardTiles
+		d.ApiData.DiscardTiles1 = d.players[1].discardTiles
+		d.ApiData.DiscardTiles2 = d.players[2].discardTiles
+		d.ApiData.DiscardTiles3 = d.players[3].discardTiles
 	}()
 
 	if !debugMode {
